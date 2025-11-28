@@ -1,21 +1,22 @@
 ---
 layout: ../../components/MarkdownPost.astro
-title: "Evaluating the Effects of Non-Photorealistic Rendering in Video Games – CEV 2023"
+title: "Real-Time GPU Foliage Instancing on Arbitrary Surfaces Using Quasi-Monte Carlo Sampling – 2025"
 author: 
-  name: "Victor Melia Vilar, Micaela Y. Martín, Miguel Chover, Mateu Sbert"
-  url: "/NPR.PNG"
+  name: "Victor Melia-Vilar, Miguel Chover"
+  url: "/QMC.PNG"
 image:
-  url: "/NPR.PNG"
-  alt: "NPR Shaders in video games"
-tags: ["NPR","video games","rendering","graphics","research"]
-pubDate: 'Dec 01, 2023'
-source: "https://ceur-ws.org/Vol-3599/paper_8.pdf"
+  url: "/QMC.PNG"
+  alt: "GPU Foliage Instancing"
+tags: ["GPU rendering","QMC sampling","real-time graphics","foliage instancing","compute shaders"]
+pubDate: 'Jun 14, 2025'
+source: "https://ssrn.com/abstract=5295246"
 ---
 
+Real-time rendering of dense vegetation typically depends on detailed 3D plant models that combine trunks, branches, and leaves into a single mesh. While effective for predefined assets, this approach breaks down when vegetation must adapt to irregular or procedurally generated surfaces such as complex canopies, terrains, or green walls. The limitations of these traditional methods—rigid topology, memory cost, and poor adaptability—highlight the need for a more flexible solution.
 
-This study explores how non-photorealistic rendering (NPR) affects player experience in video games. While photorealism has traditionally dominated game development, recent trends show a growing interest in stylized visual approaches. NPR techniques enable these styles by applying shading methods that reproduce artistic effects such as outlines, abstraction, or hand-drawn aesthetics. Although the technical aspects of NPR have been widely examined, there is limited research on how these visual styles influence player perception and emotional response. To address this gap, the authors conducted a comparative experiment using the Unity game *John Lemon* as a testbed. Five NPR effects were implemented to generate visually distinct versions of the same game environment, ensuring that only the graphical style varied while gameplay remained constant.
+This paper introduces a fully GPU-based technique for instancing individual leaves directly on arbitrary surfaces. Instead of relying on Poisson Disk Sampling, which requires spatial validation structures and iterative rejection steps, the method uses Quasi-Monte Carlo (QMC) sampling—specifically Halton sequences—to achieve uniform distribution without neighbor checks or CPU processing. All placement, sampling, and evaluation are executed in parallel via compute shaders, making the system deterministic, reproducible, and highly scalable.
 
-A group of fifteen participants played through each of the five versions and completed the in-game module of the Game Experience Questionnaire (GEQ) after each session. This questionnaire evaluates multiple dimensions of player experience, including competence, sensory and imaginative immersion, flow, tension, and positive or negative affect. The collected responses were analyzed using descriptive statistics, focusing on medians and distribution patterns to assess how each NPR effect influenced the player’s experience.
+On a mid-range RTX 3050 GPU, the technique can place more than 400,000 leaves in roughly two seconds, using just 133 MB of VRAM. The method supports both triangular meshes and heightmap-based terrains, enabling leaf instancing on a wide variety of geometries. By computing normals, applying controlled random perturbations, and batching instances for rendering, the technique integrates efficiently into real-time rendering pipelines.
 
-The results indicate that NPR styles significantly impact gameplay perception. Versions featuring clear contour lines and stylized shading tend to produce higher ratings of competence, immersion, and positive affect, while effects that reduce visibility or distort the visual field are associated with increased tension, frustration, and negative affect. These findings suggest that NPR can meaningfully shape emotional and cognitive aspects of gameplay. Rather than being a purely aesthetic choice, visual style becomes an active component in how players interpret, navigate, and emotionally respond to a game. The study concludes that understanding the experiential consequences of stylistic rendering can help designers and developers make more informed decisions when selecting or crafting graphical styles for their projects.
+This GPU-driven approach demonstrates strong advantages: improved scalability, predictable distributions, negligible CPU load, and robust performance even in dense scenes. The authors conclude that QMC-based foliage instancing can serve as a foundation for next-generation real-time vegetation systems, especially in interactive graphics and procedural content workflows.
 
