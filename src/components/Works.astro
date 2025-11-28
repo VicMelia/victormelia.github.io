@@ -4,12 +4,19 @@ import Bars from "./Bars.astro"
 import svgUnderline from '../assets/underline.svg'
 import arrowCard from '../assets/arrow-card.svg'
 import robotSurvivor from '../assets/RobotSurvivor.jpg';
+import goblinmancer from '../assets/Goblinmancer.PNG';
+import growing from '../assets/GrowingFear.png';
+import castellnovo from '../assets/CronicasCastellnovo.png';
+import leftalone from '../assets/LeftingAlone.png';
+import 127_iq from '../assets/127_IQ.png';
+import deltaTime from '../assets/DeltaTime.PNG';
+
 
 const portfolio = [
   { 
     name: 'Delta Time', 
     desc: `Open-World Action RPG - Solo dev`,
-    cover: `https://images.pexels.com/photos/1051075/pexels-photo-1051075.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2`,
+    cover: deltaTime.src,
     itch: 'https://viktor-mjs.itch.io/delta-time',
     youtube: 'https://youtu.be/jzMR-CSynDc'
   },
@@ -23,33 +30,33 @@ const portfolio = [
   { 
     name: 'Cronicas de Castellnovo', 
     desc: `Educational Point & Click - Team Project`,
-    cover: `https://images.pexels.com/photos/441963/pexels-photo-441963.jpeg?auto=compress&cs=tinysrgb&w=1600`,
+    cover: castellnovo.src,
     itch: 'https://viktor-mjs.itch.io/cronicas-de-castellnovo',
     youtube: 'https://www.youtube.com/watch?v=QYuvL1p8N3o'
   },
   { 
     name: 'Goblinmancer', 
     desc: `RTS - Game Jam - BackToBits Studio`,
-    cover: `https://img.itch.zone/aW1nLzIzNDc3NDkzLnBuZw==/original/7FFIv4.png`,
+    cover: goblinmancer.src,
     itch: 'https://kiskidiego.itch.io/goblinmancer',
   },
   { 
     name: 'Growing Fear', 
     desc: `RTS - Game Jam - BackToBits Studio`,
-    cover: `https://images.pexels.com/photos/245240/pexels-photo-245240.jpeg?auto=compress&cs=tinysrgb&w=1600`,
+    cover: growing.src,
     itch: 'https://hollowblink.itch.io/growing-fear',
   },
   { 
     name: 'Lefting Alone', 
     desc: `Survival - Game Jam - Team Project`,
-    cover: `https://images.pexels.com/photos/245240/pexels-photo-245240.jpeg?auto=compress&cs=tinysrgb&w=1600`,
+    cover: leftalone.src,
     itch: 'https://viktor-mjs.itch.io/lefting-alone',
     youtube: 'www.youtube.com/watch?time_continue=1&v=evTjKs0ekJI&embeds_referring_euri=https%3A%2F%2Fviktor-mjs.itch.io%2Flefting-alone&source_ve_path=MzY4NDIsMjM4NTE'
   },
   { 
     name: '127 IQ', 
     desc: `Platformer - Solo dev`,
-    cover: `https://images.pexels.com/photos/245240/pexels-photo-245240.jpeg?auto=compress&cs=tinysrgb&w=1600`,
+    cover: 127_iq.src,
     youtube: 'https://www.youtube.com/watch?v=c6DXEmj3P7A'
   },
 ]
@@ -66,6 +73,7 @@ const portfolio = [
     {portfolio.map(item => (
       <article class="flex flex-col bg-white p-5 group relative transition-all duration-200 hover:shadow-[4px_4px_0px_rgba(0,0,0,0.3)]">
         <div class="w-full h-[200px] overflow-hidden border-2 relative">
+
           {/* imagen */}
           <img
             src={item.cover}
@@ -76,24 +84,34 @@ const portfolio = [
           {/* overlay con botones */}
           <div class="absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <div class="flex flex-col gap-3">
-              <a
-                href={item.itch}
-                target="_blank"
-                rel="noreferrer"
-                class="px-4 py-2 bg-white text-black font-medium text-sm text-center hover:bg-gray-200 transition rounded"
-              >
-                Play on itch.io
-              </a>
-              <a
-                href={item.youtube}
-                target="_blank"
-                rel="noreferrer"
-                class="px-4 py-2 bg-red-600 text-white font-medium text-sm text-center hover:bg-red-700 transition rounded"
-              >
-                Watch on YouTube
-              </a>
+
+              {/* itch.io si existe */}
+              {item.itch && (
+                <a
+                  href={item.itch}
+                  target="_blank"
+                  rel="noreferrer"
+                  class="px-4 py-2 bg-white text-black font-medium text-sm text-center hover:bg-gray-200 transition rounded"
+                >
+                  Play on itch.io
+                </a>
+              )}
+
+              {/* YouTube si existe */}
+              {item.youtube && (
+                <a
+                  href={item.youtube}
+                  target="_blank"
+                  rel="noreferrer"
+                  class="px-4 py-2 bg-red-600 text-white font-medium text-sm text-center hover:bg-red-700 transition rounded"
+                >
+                  Watch on YouTube
+                </a>
+              )}
+
             </div>
           </div>
+
         </div>
 
         <div class="space-y-1 pt-4">
@@ -103,6 +121,7 @@ const portfolio = [
           </div>
           <p class="mr-20">{item.desc}</p>
         </div>
+
         <Bars />
       </article>
     ))}
