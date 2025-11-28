@@ -3,9 +3,9 @@ layout: ../../components/MarkdownPost.astro
 title: "Evaluating the Effects of Non-Photorealistic Rendering in Video Games – CEV 2023"
 author: 
   name: "Victor Melia Vilar, Micaela Y. Martín, Miguel Chover, Mateu Sbert"
-  url: "public/NPR.PNG"
+  url: "/NPR.PNG"
 image:
-  url: "public/NPR.PNG"
+  url: "/NPR.PNG"
   alt: "NPR Shaders in video games"
 tags: ["NPR","video games","rendering","graphics","research"]
 pubDate: 'Dec 01, 2023'
