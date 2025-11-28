@@ -4,20 +4,15 @@ import Layout from "../layouts/Layout.astro";
 
 import AppHeader from '../components/Header.astro';
 import AppFooter from '../components/Footer.astro';
+import foto from '../assets/cvportfolio.jpg';
 
 const skills = [
   "Unity & C# gameplay programming",
   "HLSL / Shader Graph for custom rendering",
   "Real-time VFX & particle systems",
   "GPU compute & procedural techniques",
-  "Technical game design & tools"
-];
-
-const highlights = [
-  "Winner of the Best Final Degree Project in Game Design & Development (Gamesis 2025).",
-  "Selected speaker at the Spanish Video Game Congress (CEV 2023), presenting research on non-photorealistic rendering.",
-  "Recognized as VFX Team Leader at BackToBits Studio, coordinating effects and visual direction.",
-  "Winner of “La Triple” for *Crónicas de Castellnovo* during the third year of the degree, recognized by UJI."
+  "Technical game design & tools",
+  "Profiling, optimization & clean code practices"
 ];
 ---
 
@@ -26,54 +21,65 @@ const highlights = [
   
   <section class="py-40">
     <div class="max-w-4xl mx-auto px-4">
-      <!-- Title -->
       <div class="mb-10">
         <h1 class="title text-5xl font-black mb-3">About me</h1>
-        <p class="text-lg max-w-2xl">
-          I’m Victor Melia, a Video Game Developer focused on real-time graphics, VFX, and computer graphics research.
-          I enjoy building gameplay systems, stylized rendering techniques, and experimental prototypes that push how games
-          look and feel.
-        </p>
       </div>
 
-      <!-- Main content -->
-      <div class="grid grid-cols-1 md:grid-cols-[60%_40%] gap-10">
-        <!-- Bio -->
-        <div class="space-y-5">
-          <p>
-            My work sits at the intersection of <strong>gameplay</strong> and <strong>visual technology</strong>.
-            I’ve been developing games and prototypes using Unity, exploring topics like non-photorealistic rendering,
-            GPU foliage instancing and real-time VFX for immersive player experiences.
-          </p>
-
-          <p>
-            Beyond shipped projects and game jams, I’m heavily involved in <strong>R&amp;D</strong>:
-            presenting papers, experimenting with shaders, and testing how visual style impacts player perception.
-            I like solving problems that require both technical precision and strong artistic direction.
-          </p>
-
-          <p>
-            When I’m not tweaking shaders or particle systems, I’m usually prototyping gameplay ideas,
-            reading graphics papers, or collaborating with small teams to bring experimental concepts to life.
-          </p>
+      <div class="grid grid-cols-1 md:grid-cols-[40%_60%] gap-10 items-start">
+        {/* FOTO IZQUIERDA */}
+        <div class="flex justify-center md:justify-start">
+          <div class="bg-white border-2 shadow-[6px_6px_0px_rgba(0,0,0,0.3)] p-3 max-w-xs w-full">
+            <div class="w-full aspect-[3/4] border-2 overflow-hidden">
+              <img 
+                src={foto.src} 
+                alt="Portrait of Victor Melia" 
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div class="mt-4">
+              <h2 class="text-xl font-bold">Víctor Melià Vilar</h2>
+              <p class="text-sm text-gray-700">
+                Technical Artist & Software Engineer
+              </p>
+            </div>
+          </div>
         </div>
 
-        <!-- Sidebar: skills + highlights -->
+        {/* TEXTO + SKILLS DERECHA */}
         <div class="space-y-6">
+          <div class="space-y-4 text-[15px] leading-relaxed">
+            <p>
+              I’m <strong>Víctor Melià Vilar</strong>, a Technical Artist and Software Engineer specialized in 
+              real-time graphics, VFX, and game development. I graduated in <strong>Game Design and Development</strong> 
+              at <strong>Universitat Jaume I (UJI)</strong>, where I built a strong foundation in both programming 
+              and visual design for interactive media.
+            </p>
+
+            <p>
+              For the past <strong>4 years</strong>, I’ve been working at <strong>Estudia i Investiga</strong> in 
+              <strong>R&amp;D</strong>, focusing on projects that bridge academic research and real-time technologies. 
+              My work often explores how rendering, shaders and visual feedback can enhance gameplay, immersion, and 
+              player experience.
+            </p>
+
+            <p>
+              I’ve also taken part in <strong>three Ministry-funded projects</strong>, collaborating with multidisciplinary 
+              teams to prototype new technologies, test experimental ideas, and push the boundaries of what’s possible in 
+              real-time applications and video games.
+            </p>
+
+            <p>
+              As a Technical Artist, I enjoy being the link between art and engineering: creating tools, shaders and VFX 
+              that are not only visually striking, but also performant, scalable, and friendly for the rest of the team.
+            </p>
+          </div>
+
           <div class="bg-white border-2 p-5 shadow-[4px_4px_0px_rgba(0,0,0,0.3)]">
             <h2 class="text-xl font-bold mb-3">Core skills</h2>
             <ul class="list-disc list-inside space-y-1 text-sm">
               {skills.map((skill) => (
                 <li>{skill}</li>
-              ))}
-            </ul>
-          </div>
-
-          <div class="bg-white border-2 p-5 shadow-[4px_4px_0px_rgba(0,0,0,0.3)]">
-            <h2 class="text-xl font-bold mb-3">Highlights</h2>
-            <ul class="list-disc list-inside space-y-2 text-sm">
-              {highlights.map((item) => (
-                <li>{item}</li>
               ))}
             </ul>
           </div>
