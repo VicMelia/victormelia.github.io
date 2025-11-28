@@ -24,21 +24,6 @@ const { frontmatter } = Astro.props;
     <h1 class="title text-4xl font-black">{frontmatter.title}</h1>
 
     <div class="flex flex-col">
-
-        <div class="flex border-t border-b border-gray-100 mb-5 py-4">
-            <div class="flex-1 flex gap-6">
-
-            </div>
-            <div class="flex gap-6">
-
-            </div>
-        </div>
-
-        <!-- contenido del markdown -->
-        <div class="prose prose-neutral max-w-none">
-            <slot />
-        </div>
-
         <!-- apartado Source -->
         {frontmatter.source && (
             <div class="mt-8 p-4 border-t border-gray-200">
@@ -53,6 +38,11 @@ const { frontmatter } = Astro.props;
             </a>
             </div>
         )}
+
+        <!-- contenido del markdown -->
+        <div class="prose prose-neutral max-w-none">
+            <slot />
+        </div>
 
     </div>
 
