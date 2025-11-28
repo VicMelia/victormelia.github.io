@@ -1,5 +1,5 @@
 const author = {
-    name: `Victor`,
+    name: `Victor Melia`,
     nickname: `Victor`,
     tiktok: `https://www.tiktok.com/@codetonero`,
     ig: `https://www.instagram.com/codetonero/`,
